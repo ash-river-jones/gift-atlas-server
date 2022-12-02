@@ -1,11 +1,14 @@
+require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const PORT = process.env.PORT || 8080
 
-//import Routes here
 
-require('dotenv').config()
-const PORT = 8080
+
+const gifteesRoutes = require('./routes/gifteesRouets')
+const giftsRoutes = require('./routes/giftsRoutes')
+
 
 app.use(cors())
 app.use(express.static('public'))
@@ -14,7 +17,8 @@ app.use(( req, res, next )=>{
 	next() 
 })
 
-// add app.use routes here
+app.use('/giftees', gifteesRoutes)
+app.use('/gifts', giftsRoutes)
 
 app.listen(PORT, function () {
 	console.log(`server running at http://localhost:${PORT}`);
