@@ -17,4 +17,8 @@ router
     .route('/:giftee_id/gifts')
     .get(gifteesController.getGiftsForGiftee) // good
 
+router
+    .route('/:giftee_id/purchased')
+    .get(gifteesController.getPurchasedGiftsForGiftee) // good
+
 module.exports = router;

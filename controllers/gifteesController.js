@@ -11,7 +11,6 @@ exports.getAllGiftees = (req, res) => {
 };
 
 exports.postGiftee = (req, res) => {
-	console.log(req.body)
 	if (
 		!req.body.giftee_id ||
 		!req.body.user_id ||
@@ -87,6 +86,20 @@ exports.deleteGiftee = (req, res) => {
 exports.getGiftsForGiftee = (req, res) => {
 	knex('gifts')
 		.where({ giftee_id: req.params.giftee_id })
+		.then((data) => {
+			res.status(200).json(data);
+		})
+		.catch((err) => {
+			res.status(400).json({
+				message: `Error retrieving gifts for giftee ${req.params.giftee_id}`,
+				error: err,
+			});
+		});
+};
+
+exports.getPurchasedGiftsForGiftee = (req, res) => {
+	knex('gifts')
+		.where({ giftee_id: req.params.giftee_id, gift_status: "Ordered/Purchasde" })
 		.then((data) => {
 			res.status(200).json(data);
 		})
