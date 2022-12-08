@@ -15,7 +15,7 @@ exports.seed = async function(knex) {
       next_holiday: 'Christmas',
       next_holiday_date: 'December 25',
       email: 'achelseamiller@hotmail.com',
-      phone: '+1 (123) 456 7890',
+      phone: '(123) 456 7890',
       address: '455 Granville Street, Vancouver, BC',
       gift_form_opt_in: "Yes"
     },
@@ -28,7 +28,7 @@ exports.seed = async function(knex) {
       next_holiday: 'Christmas',
       next_holiday_date: 'December 25',
       email: 'cedar@woof.dog',
-      phone: '+1 (123) 456 7890',
+      phone: '(123) 456 7890',
       address: '455 Granville Street, Vancouver, BC',
       gift_form_opt_in: "No"
     },
@@ -41,7 +41,7 @@ exports.seed = async function(knex) {
       next_holiday: 'Christmas',
       next_holiday_date: 'December 25',
       email: 'cashew@meow.cat',
-      phone: '+1 (123) 456 7890',
+      phone: '(123) 456 7890',
       address: '455 Granville Street, Vancouver, BC',
       gift_form_opt_in: "No"
     },
@@ -54,7 +54,7 @@ exports.seed = async function(knex) {
       next_holiday: 'Christmas',
       next_holiday_date: 'December 25',
       email: 'clemi@meow.cat',
-      phone: '+1 (123) 456 7890',
+      phone: '(123) 456 7890',
       address: '455 Granville Street, Vancouver, BC',
       gift_form_opt_in: "Yes"
     }

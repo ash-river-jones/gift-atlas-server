@@ -2,6 +2,7 @@ const knex = require('knex')(require('../knexfile'));
 
 
 exports.postGift = (req, res) => {
+	// console.log(req.body)
 	if (
 		!req.body.gift_id ||
         !req.body.giftee_id ||
