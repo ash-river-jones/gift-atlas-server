@@ -70,4 +70,3 @@ exports.deleteGift = (req, res) => {
 			});
 		});
 };
-

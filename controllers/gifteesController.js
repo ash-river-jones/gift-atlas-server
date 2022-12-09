@@ -99,7 +99,7 @@ exports.getGiftsForGiftee = (req, res) => {
 
 exports.getPurchasedGiftsForGiftee = (req, res) => {
 	knex('gifts')
-		.where({ giftee_id: req.params.giftee_id, gift_status: "Ordered/Purchasde" })
+		.where({ giftee_id: req.params.giftee_id, gift_status: "Ordered/Purchased" })
 		.then((data) => {
 			res.status(200).json(data);
 		})
