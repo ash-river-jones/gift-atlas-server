@@ -7,8 +7,7 @@ exports.up = function (knex) {
 		table.uuid('user_id').primary().notNullable();
 		table.string('user_name').notNullable();
 		table.string('email').notNullable();
-		table.string('phone');
-		table.string('password').notNullable();
+		table.string('hashed_password').notNullable();
 	});
 };
 
