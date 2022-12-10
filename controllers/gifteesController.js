@@ -2,6 +2,7 @@ const knex = require('knex')(require('../knexfile'));
 
 exports.getAllGiftees = (req, res) => {
 	knex('giftees')
+		.where({ user_id: req.user.user_id })
 		.then((data) => {
 			res.status(200).json(data);
 		})
@@ -41,7 +42,7 @@ exports.postGiftee = (req, res) => {
 
 exports.getSingleGiftee = (req, res) => {
 	knex('giftees')
-		.where({ giftee_id: req.params.giftee_id })
+		.where({ giftee_id: req.params.giftee_id, user_id: req.user.user_id})
 		.then((data) => {
 			res.status(200).json(data);
 		})
@@ -70,7 +71,7 @@ exports.putGiftee = (req, res) => {
 
 exports.deleteGiftee = (req, res) => {
 	knex('giftees')
-		.where('giftee_id', req.params.giftee_id)
+		.where({giftee_id: req.params.giftee_id,user_id: req.paraqms.user_id})
 		.delete()
 		.then(() => {
 			res.status(200).json({message: `Giftee with id ${req.params.giftee_id} has been deleted successfully`});
@@ -85,7 +86,7 @@ exports.deleteGiftee = (req, res) => {
 
 exports.getGiftsForGiftee = (req, res) => {
 	knex('gifts')
-		.where({ giftee_id: req.params.giftee_id })
+		.where({ giftee_id: req.params.giftee_id, user_id: req.user.user_id})
 		.then((data) => {
 			res.status(200).json(data);
 		})
@@ -99,7 +100,7 @@ exports.getGiftsForGiftee = (req, res) => {
 
 exports.getPurchasedGiftsForGiftee = (req, res) => {
 	knex('gifts')
-		.where({ giftee_id: req.params.giftee_id, gift_status: "Ordered/Purchased" })
+		.where({ giftee_id: req.params.giftee_id, gift_status: "Ordered/Purchased", user_id: req.user.user_id})
 		.then((data) => {
 			res.status(200).json(data);
 		})

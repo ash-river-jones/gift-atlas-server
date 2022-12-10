@@ -29,7 +29,7 @@ exports.postGift = (req, res) => {
 
 exports.getSingleGift = (req, res) => {
 	knex('gifts')
-		.where({ gift_id: req.params.gift_id })
+		.where({ gift_id: req.params.gift_id, user_id: req.user.user_id })
 		.then((data) => {
 			res.status(200).json(data);
 		})
