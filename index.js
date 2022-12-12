@@ -16,19 +16,6 @@ app.use(express.static('public'))
 app.use(express.json())
 
 app.use('/login', loginRoutes)
-
-app.use(( req, res, next )=>{
-	const authHeader = req.headers['authorization']
-	const authToken = authHeader && authHeader.split(' ')[1]
-	if (authToken == null) return res.status(401).json({message:"No persmissions, please sign in."})
-	jwt.verify(authToken, process.env.JWT_SECRET, (err, user) => {
-		console.log(err)
-		if (err) return res.status(403)
-		req.user = user
-	})
-	next() 
-})
-
 app.use('/giftees', gifteesRoutes)
 app.use('/gifts', giftsRoutes)
 app.use('/users', usersRoutes)

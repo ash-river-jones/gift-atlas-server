@@ -31,15 +31,19 @@ exports.signUp = async (req, res) => {
 
 exports.login = (req, res) => {
 	knex("users")
-		.where({email:req.body.email})
+		.where({email: req.body.email})
 		.then((user) => {
 			bcrypt.compare(
 				req.body.password,
 				user[0].hashed_password,
 				(error, data) => {
 					if(!error) {
-						const authToken = jwt.sign({user_id:user[0].user_id,email:user[0].email,user_name:user[0].user_name},JWT_SECRET)
-						res.status(200).json({message:"successful login", authToekn: authToken})
+						const authToken = jwt.sign({ 
+							user_id: user[0].user_id, 
+							email: user[0].email, 
+							user_name:user[0].user_name 
+						},JWT_SECRET)
+						res.status(200).json({message:"successful login", authToken: authToken})
 					} else {
 						res.status(400).json({message:"this is not a valid username/password", error: error})
 					}
@@ -47,6 +51,6 @@ exports.login = (req, res) => {
 			)
 		})
 		.catch((error) => {
-			res.status(400).json({message:"there was an error with this request", error: error})
+			res.status(500).json({message:"there was an error with this request", error: error})
 		})
 };

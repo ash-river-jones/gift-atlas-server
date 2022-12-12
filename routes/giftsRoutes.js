@@ -8,7 +8,6 @@ function authenticateToken ( req, res, next ) {
 	const authToken = authHeader && authHeader.split(' ')[1]
 	if (authToken == null) return res.status(401).json({message:"No persmissions, please sign in."})
 	jwt.verify(authToken, process.env.JWT_SECRET, (err, user) => {
-		console.log(err)
 		if (err) return res.status(403)
 		req.user = user
 	})
@@ -24,5 +23,10 @@ router
     .get(authenticateToken, giftsController.getSingleGift) //good
     .put(authenticateToken, giftsController.putGift) //good
     .delete(authenticateToken, giftsController.deleteGift) //good
+
+
+router
+	.route(`/:user_id/:giftee_id/`)
+	.post(giftsController.postExternalGift)
 
 module.exports = router;

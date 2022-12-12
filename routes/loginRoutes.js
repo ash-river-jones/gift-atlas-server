@@ -4,7 +4,7 @@ const loginController = require('../controllers/loginController')
 
 router
     .route('/')
-    .get(loginController.login)
+    .post(loginController.login)
 
 router
     .route('/signup')

@@ -2,7 +2,6 @@ const knex = require('knex')(require('../knexfile'));
 
 
 exports.postGift = (req, res) => {
-	// console.log(req.body)
 	if (
 		!req.body.gift_id ||
         !req.body.giftee_id ||
@@ -69,4 +68,30 @@ exports.deleteGift = (req, res) => {
 				error: err,
 			});
 		});
+};
+
+
+exports.postExternalGift = (req, res) => {
+	if (
+		!req.body.gift_id ||
+        !req.body.giftee_id ||
+		!req.body.user_id ||
+		!req.body.item_name
+	) {
+		res.status(400).json({
+			message: `Error: Invalid/Incomplete Request`
+		});
+	} else {
+		knex('gifts')
+			.insert(req.body)
+			.then(() => {
+				res.status(201).json({message: `A new gift has been created for giftee with ID ${req.body.giftee_id}`});
+			})
+			.catch((err) => {
+				res.status(400).json({
+					message: `Error adding gift`,
+                    error: err
+				});
+			});
+	}
 };
