@@ -71,7 +71,7 @@ exports.putGiftee = (req, res) => {
 
 exports.deleteGiftee = (req, res) => {
 	knex('giftees')
-		.where({giftee_id: req.params.giftee_id,user_id: req.paraqms.user_id})
+		.where({giftee_id: req.params.giftee_id})
 		.delete()
 		.then(() => {
 			res.status(200).json({message: `Giftee with id ${req.params.giftee_id} has been deleted successfully`});
