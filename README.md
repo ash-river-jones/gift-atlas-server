@@ -1,4 +1,3 @@
-
 # Gift Atlas - API Server 🎁 
 
 Is holiday shopping stressful? Not knowing what gifts to get people? That's the best part of of Gift Atlas. The application is a dashboard where you can add those important to you, track their birthday and upcoming holiday, and track which gifts they'd like and have them send you gift ideas when you aren't sure!
