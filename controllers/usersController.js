@@ -1,7 +1,7 @@
 const knex = require('knex')(require('../knexfile'));
 
 exports.getSingleUser = (req, res) => {
-	knex.select('user_id','user_name','email','phone').from('users')
+	knex.select('user_id','user_name','email').from('users')
 		.where({ user_id: req.params.user_id })
 		.then((data) => {
 			res.status(200).json(data);
