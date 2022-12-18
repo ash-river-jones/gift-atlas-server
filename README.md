@@ -30,6 +30,15 @@ You will need to provide a JWT Secret. You cangenerate this with the following t
 `PORT`=`{SERVER PORT HERE}` <br />
 `JWT_SECRET`=`{YOUR JWT SECRET KEY}`
 
+## MySQL Database
+
+To run this project, you will need to setup a MySQL Database to manage all data. 
+Create a mySQL Database and add the name to the .env file, as stated above. 
+To get the database setup you will need to do the folllowing commands:
+
+`npx knex migrate:latest` <br />
+`npx knex seed:run`
+
 
 ## Author
 
